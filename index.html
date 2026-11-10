@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Consulta Académica</title>
+  <meta name="description" content="Consulta de materias, horarios y fechas importantes. Funciona sin conexión.">
+  <meta name="theme-color" content="#1e3a8a">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <button id="menuBtn" class="menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">☰</button>
+    <h1>🎓 Consulta Académica</h1>
+    <span id="netStatus" class="net online" role="status">En línea</span>
+  </header>
+
+  <nav id="nav" class="nav" aria-label="Navegación principal">
+    <a href="#inicio" data-sec="inicio">Inicio</a>
+    <a href="#materias" data-sec="materias">Materias</a>
+    <a href="#horario" data-sec="horario">Horario</a>
+    <a href="#calendario" data-sec="calendario">Calendario</a>
+    <a href="#acerca" data-sec="acerca">Acerca de</a>
+  </nav>
+
+  <main>
+    <section id="inicio" class="section">
+      <h2>Bienvenido</h2>
+      <p>Consulta tus materias, tu horario semanal y las fechas importantes del semestre. Una vez cargada, la app funciona <strong>sin conexión a Internet</strong>.</p>
+      <div class="cards" id="resumen"></div>
+      <button id="installBtn" class="btn" hidden>⬇ Instalar aplicación</button>
+    </section>
+
+    <section id="materias" class="section" hidden>
+      <h2>Materias</h2>
+      <label for="buscar" class="sr">Buscar materia</label>
+      <input id="buscar" type="search" placeholder="Buscar por nombre o docente…">
+      <div id="listaMaterias" class="cards"></div>
+    </section>
+
+    <section id="horario" class="section" hidden>
+      <h2>Horario semanal</h2>
+      <label for="dia">Día:</label>
+      <select id="dia"></select>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Hora</th><th>Materia</th><th>Aula</th></tr></thead>
+          <tbody id="tablaHorario"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="calendario" class="section" hidden>
+      <h2>Fechas importantes</h2>
+      <ul id="listaFechas" class="fechas"></ul>
+    </section>
+
+    <section id="acerca" class="section" hidden>
+      <h2>Acerca de</h2>
+      <p>Aplicación web progresiva (PWA) desarrollada para la Unidad 2: Desarrollo de aplicaciones web progresivas.</p>
+      <ul>
+        <li>Instalable en móvil y escritorio (manifest.json)</li>
+        <li>Recursos en caché mediante Service Worker</li>
+        <li>Funcionamiento básico sin conexión</li>
+      </ul>
+      <p id="swInfo" class="muted"></p>
+    </section>
+  </main>
+
+  <footer class="footer">Consulta Académica · PWA</footer>
+  <script src="app.js"></script>
+</body>
+</html>
